@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sarah.dao.LikesMapper" >
+  <resultMap id="BaseResultMap" type="com.sarah.model.Likes" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="articleId" property="articleid" jdbcType="INTEGER" />
+    <result column="uid" property="uid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id, articleId, uid
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from likes
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from likes
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.sarah.model.Likes" >
+    insert into likes (id, articleId, uid
+      )
+    values (#{id,jdbcType=INTEGER}, #{articleid,jdbcType=INTEGER}, #{uid,jdbcType=INTEGER}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.sarah.model.Likes" >
+    insert into likes
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="articleid != null" >
+        articleId,
+      </if>
+      <if test="uid != null" >
+        uid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="articleid != null" >
+        #{articleid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        #{uid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.sarah.model.Likes" >
+    update likes
+    <set >
+      <if test="articleid != null" >
+        articleId = #{articleid,jdbcType=INTEGER},
+      </if>
+      <if test="uid != null" >
+        uid = #{uid,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.sarah.model.Likes" >
+    update likes
+    set articleId = #{articleid,jdbcType=INTEGER},
+      uid = #{uid,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <select id="selectAll" resultMap="BaseResultMap" parameterType="com.sarah.model.Likes" >
+  select * from Likes where 1=1
+   <if test="id != null" >
+       and id = #{id,jdbcType=INTEGER}
+      </if>
+   <if test="articleid != null" >
+       and articleId = #{articleid,jdbcType=INTEGER}
+      </if>
+      <if test="uid != null" >
+       and uid = #{uid,jdbcType=INTEGER}
+      </if>
+  </select>
+</mapper>

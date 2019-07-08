@@ -1,0 +1,169 @@
+.bc_color {
+	background-color: ghostwhite;
+	}
+
+.nav_bcolor {
+	background: linear-gradient(80deg,  #009966 ,#ddd);
+	padding-bottom: 20px;
+	color: #004080;
+}
+
+.search {
+	padding: 20px 0;
+}
+
+.bar7 input {
+	width: 250px;
+	border-radius: 42px;
+	border: 1px solid #1bcdae;
+	color: black;
+}
+
+.bar7 input:focus {
+	width: 300px;
+	color: black;
+}
+
+.bar7 button {
+	background: none;
+	top: -2px;
+	border-radius: 42px;
+	right: 0;
+}
+
+.bar7 button:before {
+	content: "\f002";
+	font-family: FontAwesome;
+	border-radius: 42px;
+	color: #324b4e;
+}
+
+.frist_trile {
+	    padding: 10px 70px;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "宋体";
+}
+
+.navbar-toggle {
+	background: linear-gradient(180deg, #1bcdae, #f0f000);
+	padding: 20px;
+	color: #FFFFFF;
+}
+
+.input-group input {
+	width: 250px;
+	border-radius: 42px;
+	border: 1px solid #1bcdae;
+}
+
+
+.navbar-text {
+	border-bottom: #1bcdae;
+}
+
+.f {
+	text-align: center;
+	background: linear-gradient(180deg, #ddd ,#009966);
+}
+.f>div>div>div>a{
+	color:#fff;
+}
+.more{
+	padding: 20px;
+}
+.list_one{
+	display: none;
+	width: 100%;
+	height: 80px;
+	display:flex;
+    display: -webkit-flex;
+	display: -ms-flex;
+	border-bottom:1px dashed #C0C0C0;
+	margin-bottom: 10px;
+	margin-top: 10px;
+	background-color: white;
+	box-shadow:#ccc 0px 0px 10px;
+}
+.image>img{
+	border-bottom:1px dashed #C0C0C0;
+}
+.second_title{
+	width: 100%;
+	border-bottom:1px solid #C0C0C0;
+	background: linear-gradient(180deg, #fff ,#eee);
+}
+
+.frist_trile:hover {
+    font-size: 18px;
+}
+.image{
+	width: 18%;
+}
+#lunbobox {
+	width:500px;
+	height:300px;
+	position:relative;
+}
+.lunbo {
+	width:500px;
+	height:300px;
+}
+.lunbo img {
+	width:500px;
+	height:300px;
+	position:absolute;
+	top:0px;
+	left:0px;
+}
+#lunbobox ul {
+	width:285px;
+	position:absolute;
+	bottom:10px;
+	right:0px;
+	z-index:5;
+}
+#lunbobox ul li {
+	cursor:pointer;
+	width:10px;
+	height:4px;
+	border:1px solid #cccccc;
+	float:left;
+	list-style:none;
+	background:#cccccc;
+	text-align:center;
+	margin:0px 5px 0px 0px;
+}
+#toleft {
+	display:none;
+	width:30px;
+	height:100px;
+	font-size:40px;
+	line-height:100px;
+	text-align:center;
+	color:#f4f4f4;
+    position:absolute;
+	top:90px;
+	left:12px;
+	cursor:pointer;
+	z-index:99;
+	opacity:0.4;
+}
+#toright {
+	display:none;
+	width:30px;
+	height:100px;
+	font-size:40px;
+	line-height:100px;
+	text-align:center;
+	color:#f4f4f4;
+	/*background:#cccccc;
+	*/
+    position:absolute;
+	top:90px;
+	right:0px;
+	cursor:pointer;
+	z-index:99;
+	opacity:0.4;
+}
+

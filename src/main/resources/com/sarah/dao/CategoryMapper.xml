@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sarah.dao.CategoryMapper">
+	<resultMap id="BaseResultMap" type="com.sarah.model.Category">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="categoryName" property="categoryname"
+			jdbcType="VARCHAR" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, categoryName
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from category
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from category
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.sarah.model.Category">
+		insert into category (id, categoryName)
+		values (#{id,jdbcType=INTEGER}, #{categoryname,jdbcType=VARCHAR})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.sarah.model.Category">
+		insert into category
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="categoryname != null">
+				categoryName,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="categoryname != null">
+				#{categoryname,jdbcType=VARCHAR},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.sarah.model.Category">
+		update category
+		<set>
+			<if test="categoryname != null">
+				categoryName = #{categoryname,jdbcType=VARCHAR},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.sarah.model.Category">
+		update category
+		set categoryName = #{categoryname,jdbcType=VARCHAR}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<select id="selectAll" parameterType="com.sarah.model.Category"
+		resultMap="BaseResultMap">
+		SELECT * FROM category where 1=1
+		<if test="categoryname != null">
+			and categoryName = #{categoryname,jdbcType=VARCHAR}
+		</if>
+
+	</select>
+	<select id="selectCategoryByPage"
+		parameterType="com.sarah.model.Category" resultMap="BaseResultMap">
+		SELECT * FROM category WHERE 1=1
+		<if test="categoryname != null">
+			and categoryName LIKE concat( '%' , #{categoryname}, '%' )
+		</if>
+		limit #{index},#{rows}
+	</select>
+</mapper>
