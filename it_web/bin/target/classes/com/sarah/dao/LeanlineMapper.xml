@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sarah.dao.LeanlineMapper">
+	<resultMap id="BaseResultMap" type="com.sarah.model.Leanline">
+		<id column="id" property="id" jdbcType="INTEGER" />
+		<result column="downloadUrl" property="downloadurl"
+			jdbcType="VARCHAR" />
+		<result column="name" property="name" jdbcType="VARCHAR" />
+		<result column="leanline_categoryId"
+			property="leanlineCategoryid" jdbcType="INTEGER" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		id, downloadUrl, name, leanline_categoryId
+	</sql>
+	<select id="selectByPrimaryKey" resultMap="BaseResultMap"
+		parameterType="java.lang.Integer">
+		select
+		<include refid="Base_Column_List" />
+		from leanline
+		where id = #{id,jdbcType=INTEGER}
+	</select>
+	<delete id="deleteByPrimaryKey"
+		parameterType="java.lang.Integer">
+		delete from leanline
+		where id = #{id,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" parameterType="com.sarah.model.Leanline">
+		insert into leanline (id, downloadUrl, name,
+		leanline_categoryId)
+		values (#{id,jdbcType=INTEGER}, #{downloadurl,jdbcType=VARCHAR},
+		#{name,jdbcType=VARCHAR},
+		#{leanlineCategoryid,jdbcType=INTEGER})
+	</insert>
+	<insert id="insertSelective"
+		parameterType="com.sarah.model.Leanline">
+		insert into leanline
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				id,
+			</if>
+			<if test="downloadurl != null">
+				downloadUrl,
+			</if>
+			<if test="name != null">
+				name,
+			</if>
+			<if test="leanlineCategoryid != null">
+				leanline_categoryId,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="id != null">
+				#{id,jdbcType=INTEGER},
+			</if>
+			<if test="downloadurl != null">
+				#{downloadurl,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				#{name,jdbcType=VARCHAR},
+			</if>
+			<if test="leanlineCategoryid != null">
+				#{leanlineCategoryid,jdbcType=INTEGER},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective"
+		parameterType="com.sarah.model.Leanline">
+		update leanline
+		<set>
+			<if test="downloadurl != null">
+				downloadUrl = #{downloadurl,jdbcType=VARCHAR},
+			</if>
+			<if test="name != null">
+				name = #{name,jdbcType=VARCHAR},
+			</if>
+			<if test="leanlineCategoryid != null">
+				leanline_categoryId = #{leanlineCategoryid,jdbcType=INTEGER},
+			</if>
+		</set>
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey"
+		parameterType="com.sarah.model.Leanline">
+		update leanline
+		set downloadUrl = #{downloadurl,jdbcType=VARCHAR},
+		name = #{name,jdbcType=VARCHAR},
+		leanline_categoryId = #{leanlineCategoryid,jdbcType=INTEGER}
+		where id = #{id,jdbcType=INTEGER}
+	</update>
+	<select id="selectAll" parameterType="com.sarah.model.Leanline"
+		resultMap="BaseResultMap">
+		select * from leanline WHERE 1=1
+		<if test="id != null">
+			and id=#{id,jdbcType=INTEGER}
+		</if>
+		<if test="downloadurl!=null">
+			and downloadUrl=#{downloadurl,jdbcType=VARCHAR}
+		</if>
+		<if test="name != null">
+			and name=#{name,jdbcType=VARCHAR}
+		</if>
+		<if test="leanlineCategoryid !=null">
+			and leanline_categoryId =
+			#{leanlineCategoryid,jdbcType=LONGVARCHAR}
+		</if>
+	</select>
+	<select id="selectList" parameterType="com.sarah.model.Leanline"
+		resultMap="BaseResultMap">
+		select * from leanline WHERE 1=1
+		<if test="name != null">
+			and name LIKE concat( '%' , #{name}, '%' )
+		</if>
+		limit #{index},#{rows}
+	</select>
+</mapper>
